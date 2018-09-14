@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+    rabbitmq:
+      ##springboot整合rabbitmq基本配置
+      addresses: 103.45.9.132:5672
+      username: radio
+      password: maoabc123
+      virtual-host: gift_monitor
+
+      ##springboot整合rabbitmq消费者配置
+      listener:
+        simple:
+          concurrency: 5
+          max-concurrency: 10
+          acknowledge-mode: manual
+          prefetch: 1
