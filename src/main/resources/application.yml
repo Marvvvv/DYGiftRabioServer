@@ -4,9 +4,9 @@ server:
 spring:
     rabbitmq:
       ##springboot整合rabbitmq基本配置
-      addresses: 103.45.9.132:5672
-      username: radio
-      password: maoabc123
+      addresses: 127.0.0.1:5672
+      username: tt
+      password: tttm
       virtual-host: gift_monitor
 
       ##springboot整合rabbitmq消费者配置

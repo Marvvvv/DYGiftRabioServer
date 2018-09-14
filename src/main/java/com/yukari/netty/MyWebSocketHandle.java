@@ -12,30 +12,34 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 /**
  * 接收处理响应客户端websocket请求的核心业务处理类
  */
-public class MyWebSocketHandle extends SimpleChannelInboundHandler<Object> {
+@Component
+public class MyWebSocketHandle extends BaseWebSocketServerHandler {
 
     private WebSocketServerHandshaker handshaker;
     private static final String WEB_SOCKET_URL = "ws://localhost:8888/websocket";
 
-
     // 服务端处理客户端websocket请求的核心方法
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if (msg instanceof FullHttpRequest) {
+    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+        //http：//xxxx
+        if(msg instanceof FullHttpRequest){
             // 处理客户端向服务端发起http握手请求的业务
             handHttpRequest(ctx,(FullHttpRequest)msg);
-        } else if (msg instanceof WebSocketFrame) {
+        }else if(msg instanceof WebSocketFrame){
             // 处理websocket连接业务
             handWebScoketFrame(ctx,(WebSocketFrame)msg);
         }
 
     }
+
 
 
     // 处理客户端向服务端发起http握手请求的业务

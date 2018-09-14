@@ -1,4 +1,4 @@
-package com.yukari.dy_giftrabio_server;
+package com.yukari;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

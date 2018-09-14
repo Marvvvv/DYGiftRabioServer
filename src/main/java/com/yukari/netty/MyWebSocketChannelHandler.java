@@ -1,15 +1,20 @@
 package com.yukari.netty;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * 初始化连接时候的各个组件
  */
 public class MyWebSocketChannelHandler extends ChannelInitializer<SocketChannel> {
+
 
     @Override
     protected void initChannel(SocketChannel e) throws Exception {
