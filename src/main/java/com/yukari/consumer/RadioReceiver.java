@@ -27,9 +27,7 @@ public class RadioReceiver {
     @RabbitHandler
     public void onBulletMessage (@Payload RadioMQModel radio, @Headers Map<String,Object> headers, Channel channel) throws Exception{
         // 消费者操作
-        System.out.println("收到消息，开始工作...");
-
-        System.out.println(radio.getGift_name());
+        System.out.println("消息来了：" + radio.getGift_name());
 
         // ACK 手动签收消息需手动确认签收
         channel.basicAck((Long) headers.get(AmqpHeaders.DELIVERY_TAG),false);
